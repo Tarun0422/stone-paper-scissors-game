@@ -96,7 +96,12 @@ hamburger.addEventListener("click",()=>{
     panel.classList.toggle("show");
     clicksound.currentTime=0;
     clicksound.play();
-})
+});
+document.addEventListener("click", (e) => {
+    if (!panel.contains(e.target) && !hamburger.contains(e.target)) {
+        panel.classList.remove("show");
+    }
+});
 
 // --panel-option section--
 const mode=document.querySelector("#mode");
@@ -163,6 +168,9 @@ const winSound=new Audio("sounds/win.mp3");
 const Gamesound=new Audio("sounds/games.mp3");
 const best5sound=new Audio("sounds/best5.mp3");
 const drawSound=new Audio("sounds/draw.mp3");
+
+Gamesound.volume=0.2;
+best5sound.volume=0.2;
 
 function bgMusic(music){
     Gamesound.pause();
